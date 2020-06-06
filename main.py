@@ -37,7 +37,8 @@ class Player (object):
     self.name=name
 
   def draw (self, deck):
-    self.hand.append(Deck.draw())
+    self.hand.append(deck.draw())
+    return self
 
   def showhand(self):
     for card in self.hand:
@@ -49,9 +50,9 @@ class Player (object):
 dec= Deck()
 dec.shuffle()
 #dec.show()
-player = Player("bob")
-player.draw()
-player.show()
+bob = Player("bob")
+bob.draw(dec).draw(dec)
+bob.showhand()
 
-card=dec.draw()
-card.show()
+#ard=dec.draw()
+#card.show()
