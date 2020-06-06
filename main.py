@@ -27,18 +27,31 @@ class Deck(object):
     for i in range(len(self.cards)-1,0,-1):
       r = random.randint(0,i)
       self.cards[i],self.cards[r]=self.cards[r],self.cards[i]
-
+      
   def draw(self):
     return self.cards.pop()
 
+class Player (object):
+  def __init__(self,name):
+    self.hand=[]
+    self.name=name
 
-#class Player (object):
-  #def __init__(self):
+  def draw (self, deck):
+    self.hand.append(Deck.draw())
+
+  def showhand(self):
+    for card in self.hand:
+      card.show()
 
 #card = Card("Clubs",8)
 #card.show()
 
 dec= Deck()
-#dec.show()
 dec.shuffle()
-dec.show()
+#dec.show()
+player = Player("bob")
+player.draw()
+player.show()
+
+card=dec.draw()
+card.show()
